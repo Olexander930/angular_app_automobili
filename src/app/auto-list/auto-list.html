@@ -1,0 +1,35 @@
+<div class="container">
+  <h2 class="title">Список автомобілів</h2>
+
+  <div class="cars">
+    <div class="car-card" *ngFor="let car of cars">
+      <img [src]="car.imageUrl" [alt]="car.brand + ' ' + car.model" class="car-image" />
+
+      <h3>{{ car.brand }} {{ car.model }} ({{ car.year }})</h3>
+      <p><strong>Двигун:</strong> {{ car.engine }}</p>
+      <p><strong>Коробка:</strong> {{ car.transmission }}</p>
+      <p><strong>Витрата пального:</strong> {{ car.fuelConsumption }}</p>
+      <p><strong>Колір:</strong> {{ car.color }}</p>
+
+      <div class="price-block">
+        <p *ngIf="car.discountPrice">
+          <strong>Ціна: </strong>
+          <span class="old-price">{{ car.price | currency: 'USD':'symbol':'1.0-0' }}</span>
+          <span class="new-price">{{ car.discountPrice | currency:'USD':'symbol':'1.0-0' }}</span>
+        </p>
+
+        <div class="discount-badge" *ngIf="car.discountPrice">
+          {{ ((1 - car.discountPrice / car.price) * 100) | number:'1.0-0' }}% OFF
+        </div>
+        <p *ngIf="!car.discountPrice">
+          <strong>Ціна: </strong>
+          <span class="new-price">{{ car.price | currency: 'USD':'symbol':'1.0-0' }}</span>
+        </p>
+      </div>
+
+      <p class="availability" [class.available]="car.isAvailable" [class.unavailable]="!car.isAvailable">
+        {{ car.isAvailable ? 'В наявності' : 'Немає в наявності' }}
+      </p>
+    </div>
+  </div>
+</div>
