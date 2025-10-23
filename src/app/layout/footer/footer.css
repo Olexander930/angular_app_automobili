@@ -1,12 +1,10 @@
 footer {
-  background: #222;
-  color: #bbb;
-  padding: 20px 30px;
+  background-color: #222;
+  color: #ccc;
   text-align: center;
-  font-size: 0.9rem;
-  border-top: 3px solid #4a90e2;
+  padding: 15px 0;
+  width: 100%;
 }
-
 footer a {
   color: #4a90e2;
   text-decoration: none;
