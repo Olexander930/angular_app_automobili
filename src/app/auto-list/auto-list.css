@@ -54,7 +54,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px; /* 🔹 було 20px — тепер менше */
+  gap: 10px;
 }
 
 
