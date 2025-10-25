@@ -1,0 +1,70 @@
+.car-card {
+  width: 320px; /* фіксована ширина картки */
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 🔧 Картинка */
+.car-image {
+  width: 100%;          /* не виходить за межі картки */
+  height: 200px;        /* однакова висота для всіх */
+  object-fit: cover;    /* пропорційне обрізання */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* 💸 Ціни */
+.price-block {
+  margin-top: 10px;
+  position: relative;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 6px;
+}
+
+.new-price {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.discount-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #ff4444;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* 🔘 Наявність */
+.availability {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.available {
+  color: #28a745;
+}
+
+.unavailable {
+  color: #ff4444;
+  opacity: 0.7;
+}
