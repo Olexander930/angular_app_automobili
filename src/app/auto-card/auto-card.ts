@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Automobil } from '../core/models/car.model';
 
@@ -11,4 +11,9 @@ import { Automobil } from '../core/models/car.model';
 })
 export class AutoCard {
   @Input() car!: Automobil;
+
+  @Output() select = new EventEmitter<Automobil>();
+  onDetailsClick(){
+    this.select.emit(this.car);
+  }
 }
