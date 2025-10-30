@@ -6,12 +6,14 @@
       type="text"
       placeholder="Пошук за брендом або моделлю..."
       [(ngModel)]="searchText"
+      (ngModelChange)="searchCars()"
       class="search-input"
     />
     <button (click)="searchCars()" class="search-button">Пошук</button>
   </div>
 
   <div class="cars">
-    <app-auto-card *ngFor="let car of filteredCars" [car]="car"></app-auto-card>
+    <app-auto-card *ngFor="let car of filteredCars" [car]="car" (select)="onCarSelected($event)"></app-auto-card>
   </div>
+
 </div>

@@ -74,11 +74,19 @@ export class AutoList {
   }
 
   searchCars() {
-    const text = this.searchText.toLowerCase();
-    this.filteredCars = this.cars.filter(
-      car =>
-        car.brand.toLowerCase().includes(text) ||
-        car.model.toLowerCase().includes(text)
+    const text = this.searchText.toLowerCase().trim();
+    if (!text) {
+      this.filteredCars = this.cars;
+      return;
+    }
+    const token = text.split(/\s+/);
+    this.filteredCars = this.cars.filter(car =>{
+      const combined = (car.brand + ' ' + car.model).toLowerCase();
+      return token.every(token => combined.includes(token));
+    }
     );
+  }
+  onCarSelected(selectedCar: Automobil) {
+    console.log('Вибраний автомобіль:', selectedCar);
   }
 }
