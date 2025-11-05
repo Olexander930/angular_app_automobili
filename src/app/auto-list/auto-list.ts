@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AutoCard } from '../auto-card/auto-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../core/services/data';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-auto-list',
   standalone: true,
@@ -15,25 +16,26 @@ export class AutoList {
   searchText: string = '';
   filteredCars: Automobil[] = [];
   cars: Automobil[] = [];
+  private subscription!: Subscription;
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.cars = this.dataService.getCars();
-    this.filteredCars = [...this.cars];
+    this.subscription = this.dataService.cars$.subscribe(cars => {
+      this.cars = cars;});
+    this.dataService.resetFilter();
+  }
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   searchCars() {
-    const text = this.searchText.toLowerCase().trim();
-    if (!text) {
-      this.filteredCars = this.cars;
-      return;
-    }
-    const token = text.split(/\s+/);
-    this.filteredCars = this.cars.filter(car =>{
-      const combined = (car.brand + ' ' + car.model).toLowerCase();
-      return token.every(token => combined.includes(token));
-    }
-    );
+    this.dataService.filterCars(this.searchText);
+  }
+  clearSearch(): void {
+    this.searchText = '';
+    this.dataService.resetFilter();
   }
   onCarSelected(selectedCar: Automobil) {
     console.log('Вибраний автомобіль:', selectedCar);
