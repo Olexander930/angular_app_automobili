@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.css']
 })
 export class Header {
-  appName: string = 'Angular додаток';
+  appName: string = 'AutoMarket';
 }

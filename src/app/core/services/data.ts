@@ -60,6 +60,59 @@ export class DataService {
       price: 86995,
       imageUrl:'assets/images/Audi.jpg',
       isAvailable: true,
+    },
+    {
+      id: 5,
+      brand: 'Skoda',
+      model: 'Octavia',
+      year: 2024,
+      engine: '1.8 L',
+      transmission: 'Automatic',
+      fuelConsumption: '7.7 L/100km',
+      color: 'Blue',
+      price: 38000,
+      imageUrl: 'assets/images/Skoda.jpg',
+      isAvailable: true
+    },
+    {
+      id: 6,
+      brand: 'Ford',
+      model: 'Mustang GT',
+      year: 2023,
+      engine: '5.0L V8',
+      transmission: 'Mechanics',
+      fuelConsumption: '12.5 L/100km',
+      color: 'Blue',
+      price: 72000,
+      imageUrl: 'assets/images/Ford.png',
+      isAvailable: true,
+      discountPrice: 68000
+    },
+    {
+      id: 7,
+      brand: 'Volkswagen',
+      model: 'Golf GTI',
+      year: 2022,
+      engine: '2.0L Turbo',
+      transmission: 'Automatic',
+      fuelConsumption: '8.0 L/100km',
+      color: 'Red',
+      price: 36000,
+      imageUrl: 'assets/images/Golf.png',
+      isAvailable: false
+    },
+    {
+      id: 8,
+      brand: 'Hyundai',
+      model: 'Tucson',
+      year: 2024,
+      engine: '1.6L Turbo',
+      transmission: 'Automatic',
+      fuelConsumption: '7.8 L/100km',
+      color: 'Gray',
+      price: 31000,
+      imageUrl: 'assets/images/Hyundai.png',
+      isAvailable: true
     }
   ];
   private carsSubject = new BehaviorSubject<Automobil[]>(this.cars);
@@ -85,5 +138,8 @@ export class DataService {
   }
   resetFilter(): void {
     this.carsSubject.next(this.cars);
+  }
+  getCarById(id: number): Automobil | undefined {
+    return this.cars.find(car => car.id === id);
   }
 }
