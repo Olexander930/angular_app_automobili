@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Automobil } from '../models/car.model';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -61,8 +62,28 @@ export class DataService {
       isAvailable: true,
     }
   ];
+  private carsSubject = new BehaviorSubject<Automobil[]>(this.cars);
+  cars$ = this.carsSubject.asObservable();
+  constructor() {}
 
-  getCars(): Automobil[] {
-    return this.cars;
+  getCars(): Observable <Automobil[]> {
+    return of(this.cars);
+  }
+  filterCars(searchTerm: string): void {
+    const term = searchTerm.toLowerCase().trim();
+    if (!term) {
+      this.carsSubject.next(this.cars);
+      return;
+    }
+    const tokens = term.split(/\s+/);
+
+    const filtered = this.cars.filter(car =>{
+      const combined = (car.brand + ' ' + car.model).toLowerCase();
+        return tokens.every(t => combined.includes(t));
+    });
+    this.carsSubject.next(filtered);
+  }
+  resetFilter(): void {
+    this.carsSubject.next(this.cars);
   }
 }
