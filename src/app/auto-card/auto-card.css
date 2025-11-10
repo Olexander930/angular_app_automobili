@@ -1,5 +1,5 @@
 .car-card {
-  width: 320px; /* фіксована ширина картки */
+  width: 320px;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 16px;
@@ -9,6 +9,7 @@
   position: relative;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
 }
 
 .car-card:hover {
@@ -16,16 +17,14 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* 🔧 Картинка */
 .car-image {
-  width: 100%;          /* не виходить за межі картки */
-  height: 200px;        /* однакова висота для всіх */
-  object-fit: cover;    /* пропорційне обрізання */
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
 }
 
-/* 💸 Ціни */
 .price-block {
   margin-top: 10px;
   position: relative;
