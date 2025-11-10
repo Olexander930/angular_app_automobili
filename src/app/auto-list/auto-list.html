@@ -14,9 +14,14 @@
   </div>
 
   <div class="cars">
-    <app-auto-card *ngFor="let car of cars" [car]="car" (select)="onCarSelected($event)"></app-auto-card>
+    <app-auto-card
+      *ngFor="let car of cars"
+      [car]="car"
+      (select)="onCarSelected($event)">
+    </app-auto-card>
+  </div>
+
   <div *ngIf="cars.length === 0" class="no-results">
     Немає автомобілів за вашим запитом.
   </div>
-</div>
 </div>

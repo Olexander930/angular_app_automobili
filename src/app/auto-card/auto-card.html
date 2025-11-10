@@ -29,5 +29,5 @@
   <p class="availability" [ngClass]="{ 'available': car.isAvailable, 'unavailable': !car.isAvailable }">
     {{ car.isAvailable ? 'В наявності' : 'Немає в наявності' }}
   </p>
-    <button (click)="onDetailsClick()">Детальніше</button>
+    <a [routerLink]="['/cars', car.id]" class="details-link">Детальніше</a>
 </div>

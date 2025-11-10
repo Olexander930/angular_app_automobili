@@ -1,0 +1,15 @@
+<div class="details-container" *ngIf="car">
+  <h2 class="details-header">{{ car.brand }} {{ car.model }} ({{ car.year }})</h2>
+
+  <img [src]="car.imageUrl" [alt]="car.brand + ' ' + car.model" class="details-image" />
+
+  <div class="details-info">
+    <p><strong>Двигун:</strong> {{ car.engine }}</p>
+    <p><strong>Коробка:</strong> {{ car.transmission }}</p>
+    <p><strong>Витрата пального:</strong> {{ car.fuelConsumption }}</p>
+    <p><strong>Колір:</strong> {{ car.color }}</p>
+    <p class="details-price">Ціна: {{ car.price | currency:'USD':'symbol':'1.0-0' }}</p>
+  </div>
+
+  <a routerLink="/cars" class="back-link">← Повернутись до списку</a>
+</div>
