@@ -63,7 +63,7 @@ export class DataService {
     },
     {
       id: 5,
-      brand: 'Skoda',
+      brand: 'Skoda made in Ukraine',
       model: 'Octavia',
       year: 2024,
       engine: '1.8 L',

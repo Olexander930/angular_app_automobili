@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AutoCard } from '../auto-card/auto-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../core/services/data';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+
 @Component({
   selector: 'app-auto-list',
   standalone: true,
@@ -15,13 +16,12 @@ import { Subscription } from 'rxjs';
 export class AutoList {
   searchText: string = '';
   filteredCars: Automobil[] = [];
-  cars: Automobil[] = [];
+  cars$!: Observable<Automobil[]>;
   private subscription!: Subscription;
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.subscription = this.dataService.cars$.subscribe(cars => {
-      this.cars = cars;});
+    this.cars$ = this.dataService.cars$;
     this.dataService.resetFilter();
   }
   ngOnDestroy(): void {
