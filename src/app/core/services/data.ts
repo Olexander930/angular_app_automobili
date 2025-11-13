@@ -142,4 +142,9 @@ export class DataService {
   getCarById(id: number): Automobil | undefined {
     return this.cars.find(car => car.id === id);
   }
+  addCar(newCar: Automobil): void {
+    const addedCar = { ...newCar, id: Date.now() };
+    this.cars = [...this.cars, addedCar];
+    this.carsSubject.next(this.cars);
+  }
 }
