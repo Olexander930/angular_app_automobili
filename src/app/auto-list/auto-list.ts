@@ -5,11 +5,12 @@ import { AutoCard } from '../auto-card/auto-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../core/services/data';
 import { Subscription, Observable } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-auto-list',
   standalone: true,
-  imports: [CommonModule, AutoCard, FormsModule],
+  imports: [CommonModule, AutoCard, FormsModule, RouterModule],
   templateUrl: './auto-list.html',
   styleUrls: ['./auto-list.css']
 })
