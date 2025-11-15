@@ -29,13 +29,19 @@ export class AutoFormComponent {
 
   onSubmit(): void {
     if (this.carForm.valid) {
-      this.dataService.addCar(this.carForm.value);
-      alert('Автомобіль успішно додано!');
-      this.router.navigate(['/cars']);
+      this.dataService.addCar(this.carForm.value).subscribe({
+        next: () => {
+          alert('Автомобіль успішно додано!');
+          this.router.navigate(['/cars']);
+        },
+        error: (err) => {
+          console.error('Помилка POST:', err);
+          alert('Сталася помилка при додаванні авто');
+        }
+      });
     } else {
       this.carForm.markAllAsTouched();
     }
   }
 }
-
 
