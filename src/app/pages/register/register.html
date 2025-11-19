@@ -1,0 +1,36 @@
+<div class="auth-container">
+  <div class="auth-card">
+
+    <h2 class="title">Реєстрація</h2>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+    <div *ngIf="success" class="success">{{ success }}</div>
+
+    <form (ngSubmit)="onRegister()">
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" required name="email">
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" [(ngModel)]="password" required name="password">
+      </div>
+
+      <div class="input-group">
+        <label>Repeat Password</label>
+        <input type="password" [(ngModel)]="repeatPassword" required name="repeatPassword">
+      </div>
+
+      <button type="submit" class="reg-btn">Створити акаунт</button>
+
+    </form>
+
+    <div class="switch">
+      Вже є акаунт?
+      <a routerLink="/login">Увійти</a>
+    </div>
+
+  </div>
+</div>
