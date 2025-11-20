@@ -1,11 +1,17 @@
-<header>
+<nav class="navbar">
   <div class="logo">{{ appName }}</div>
-  <nav>
-    <ul>
-      <li><a routerLink="/">Головна</a></li>
-      <li><a routerLink="/about">Про нас</a></li>
-      <li><a routerLink="/services">Послуги</a></li>
-      <li><a routerLink="/contacts">Контакти</a></li>
-    </ul>
-  </nav>
-</header>
+  <ul class="menu">
+    <li><a routerLink="/">Головна</a></li>
+    <li><a routerLink="/about">Про нас</a></li>
+    <li><a routerLink="/services">Послуги</a></li>
+    <li><a routerLink="/contacts">Контакти</a></li>
+  </ul>
+  <div class="auth-buttons" *ngIf="!authService.isLoggedIn()">
+    <a routerLink="/login" class="btn-login">Вхід</a>
+    <a routerLink="/register" class="btn-register">Реєстрація</a>
+  </div>
+  <div class="user-panel" *ngIf="authService.isLoggedIn()">
+    <span class="username">Вітаю, {{ authService.getUserName() }}</span>
+    <button class="btn-logout" (click)="authService.logout()">Вийти</button>
+  </div>
+</nav>

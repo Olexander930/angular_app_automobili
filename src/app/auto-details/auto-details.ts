@@ -14,13 +14,18 @@ import { Automobil } from '../core/models/car.model';
 export class AutoDetails implements OnInit {
   car?: Automobil;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) {}
+  constructor(private route: ActivatedRoute, private dataService: DataService) {
+  }
 
   ngOnInit(): void {
     const idStr = this.route.snapshot.paramMap.get('id');
     const id = idStr ? Number(idStr) : NaN;
+
     if (!isNaN(id)) {
-      this.car = this.dataService.getCarById(id);
+      this.dataService.getCarById(id).subscribe({
+        next: (car) => this.car = car,
+        error: (err) => console.error('Помилка при завантаженні авто:', err)
+      });
     }
   }
 }

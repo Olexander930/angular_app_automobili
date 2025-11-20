@@ -1,33 +1,74 @@
-header {
-  background: linear-gradient(90deg, #4a90e2, #357ab7);
-  color: #fff;
+.navbar {
+  width: 100%;
   padding: 15px 30px;
+  background: #1e88e5; /* голубий */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: bold;
+  color: white;
 }
 
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.menu {
   display: flex;
-  gap: 20px;
+  list-style: none;
+  gap: 30px;
 }
 
-nav a {
+.menu a {
+  color: white;
+  font-size: 16px;
   text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-  transition: opacity 0.3s ease;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
-nav a:hover {
-  opacity: 0.8;
+.menu a:hover {
+  opacity: 0.7;
+}
+
+/* Кнопки */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-login,
+.btn-register {
+  padding: 6px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-login {
+  background: #e3f2fd;        /* світло-голубий */
+  color: #0d47a1;              /* темно-синій текст */
+}
+
+.btn-register {
+  background: #43a047;
+  color: white;
+}
+
+.btn-logout {
+  background: #e53935;
+  padding: 6px 15px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
 }

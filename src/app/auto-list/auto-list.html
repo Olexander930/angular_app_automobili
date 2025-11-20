@@ -18,13 +18,13 @@
 
   <div class="cars">
     <app-auto-card
-      *ngFor="let car of (cars$ | async)"
+      *ngFor="let car of filteredCars"
       [car]="car"
       (select)="onCarSelected($event)">
     </app-auto-card>
   </div>
 
-  <div *ngIf="(cars$ | async)?.length === 0" class="no-results">
+  <div *ngIf="filteredCars.length === 0" class="no-results">
     Немає автомобілів за вашим запитом.
   </div>
 </div>
